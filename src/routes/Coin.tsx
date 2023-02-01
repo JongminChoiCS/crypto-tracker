@@ -22,8 +22,6 @@ const Container = styled.div`
 const Header = styled.header`
   height: 10vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const Loader = styled.div`
@@ -34,6 +32,15 @@ const Loader = styled.div`
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
+  display: flex;
+  margin: 0 24.625%;
+`;
+
+const Home = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  color: ${(props) => props.theme.accentColor};
+  margin-top: 40%;
 `;
 
 const Overview = styled.div`
@@ -154,7 +161,10 @@ function Coin() {
   );
   const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
     ["tickers", coinId],
-    () => fetchCoinTickers(coinId)
+    () => fetchCoinTickers(coinId),
+    {
+      refetchInterval: 5000,
+    }
   );
   const loading = infoLoading || tickersLoading;
   return (
@@ -165,6 +175,9 @@ function Coin() {
         </title>
       </Helmet>
       <Header>
+        <Link to={`/`}>
+          <Home>HOME</Home>
+        </Link>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
