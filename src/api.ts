@@ -9,8 +9,7 @@ export const fetchCoinInfo = (coinId: string) =>
 export const fetchCoinTickers = (coinId: string) =>
   fetch(`${BASE_URL}/tickers/${coinId}`).then((response) => response.json());
 
-export const fetchCoinHistory = (coinId: string) => {
-  return fetch(
-    `https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}`
-  ).then((response) => response.json());
-};
+export const fetchCoinHistory = (coinId: string) =>
+  fetch(`https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}`).then(
+    (response) => response.json()
+  );
