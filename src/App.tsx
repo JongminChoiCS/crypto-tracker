@@ -1,6 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./theme";
 import Router from "./Router";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { isDarkAtom } from "./atoms";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -67,12 +70,34 @@ a {
 }
 `;
 
+const ToggleDarkButton = styled.button`
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  background-color: transparent;
+  transition: 0.2s;
+  &:hover {
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  }
+`;
+
 function App() {
+  const isDark = useRecoilValue(isDarkAtom);
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   return (
     <>
-      <GlobalStyle />
-      <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ToggleDarkButton onClick={toggleDarkAtom}>
+        {isDark ? "☀️" : "🌙"}
+      </ToggleDarkButton>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <Router />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
     </>
   );
 }

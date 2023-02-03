@@ -41,6 +41,9 @@ const Home = styled.div`
   font-weight: 600;
   color: ${(props) => props.theme.accentColor};
   margin-top: 40%;
+  &:hover {
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  }
 `;
 
 const Overview = styled.div`
@@ -197,7 +200,7 @@ function Coin() {
             </OverviewItem>
             <OverviewItem>
               <span>Price:</span>
-              <span>${tickersData?.quotes.USD.price.toFixed(3)}</span>
+              <span>${tickersData?.quotes?.USD?.price?.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
