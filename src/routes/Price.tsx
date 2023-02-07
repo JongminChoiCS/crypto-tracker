@@ -54,7 +54,7 @@ function Price({ coinId }: PriceProps) {
       ) : (
         <Container>
           <Content>
-            <span>1시간 전보다</span>
+            <span>Before 1 hour</span>
             <span
               style={
                 tickersData && tickersData.quotes.USD.percent_change_1h > 0
@@ -66,7 +66,7 @@ function Price({ coinId }: PriceProps) {
             </span>
           </Content>
           <Content>
-            <span>12시간 전보다</span>
+            <span>Before 12 hours</span>
             <span
               style={
                 tickersData && tickersData.quotes.USD.percent_change_12h >= 0
@@ -78,7 +78,7 @@ function Price({ coinId }: PriceProps) {
             </span>
           </Content>
           <Content>
-            <span>24시간 전보다</span>
+            <span>Before 24 hours</span>
             <span
               style={
                 tickersData && tickersData.quotes.USD.percent_change_24h > 0
@@ -90,7 +90,7 @@ function Price({ coinId }: PriceProps) {
             </span>
           </Content>
           <Content>
-            <span>7일 전보다</span>
+            <span>Before 7 days</span>
             <span
               style={
                 tickersData && tickersData.quotes.USD.percent_change_7d > 0
