@@ -82,7 +82,7 @@ function Coins() {
             <Coin key={coin.id}>
               <Link
                 to={{
-                  pathname: `/${coin.id}`,
+                  pathname: `/crypto-tracker/${coin.id}`,
                   state: { name: coin.name },
                 }}
               >
